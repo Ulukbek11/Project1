@@ -2,6 +2,7 @@ package com.example.project1.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,11 +12,13 @@ import java.time.LocalDate;
 @Table(name = "students")
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class Student {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @SequenceGenerator(name = "student_seq", sequenceName = "student_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "student_seq")
+
     private Long id;
 
     private String name;
@@ -28,10 +31,5 @@ public class Student {
     @JsonBackReference
     private Group group;
 
-    public Student(Long id, String name, LocalDate dob, Group group) {
-        this.id = id;
-        this.name = name;
-        this.dob = dob;
-        this.group = group;
-    }
+
 }

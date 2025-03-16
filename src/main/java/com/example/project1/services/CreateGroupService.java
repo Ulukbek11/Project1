@@ -19,7 +19,6 @@ public class CreateGroupService {
     public ResponseEntity<Group> execute(Group group) {
         if(group.getGroupId() == null
                 && group.getGroupName() != null
-                && group.getGroupName() != null
                 && group.getYear() != null
                 && group.getDepartment() != null) {
             groupRepository.save(group);

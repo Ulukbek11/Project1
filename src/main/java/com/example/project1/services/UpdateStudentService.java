@@ -32,6 +32,7 @@ public class UpdateStudentService {
             student.setDob(newStudent.getDob());
         }
 
+
         studentRepository.save(student);
         return ResponseEntity.status(HttpStatus.OK).body(student);
     }
